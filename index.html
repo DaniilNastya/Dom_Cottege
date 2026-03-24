@@ -2,764 +2,404 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Аренда дома в коттеджном поселке | Уютный дом</title>
-    <!-- Font Awesome 6 (Free Icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ВЕНОМ ХУЕСОС — WAR THUNDER ЭТО БОЛЬ</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none; /* агрессивный стиль, но текст можно выделить при желании */
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background-color: #fafaf9;
-            color: #2c2e2f;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header / Navbar - более светлый, без зеленого */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
-            z-index: 1000;
-            padding: 16px 0;
-            border-bottom: 1px solid #f0f0ee;
-        }
-
-        .nav-wrapper {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 30%, #0a0f1a, #030507);
+            font-family: 'Impact', 'Stencil Std', 'Bebas Neue', 'Arial Black', 'Segoe UI Black', sans-serif;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #4a5562;
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #5a6572;
-            transition: color 0.2s;
-            font-size: 1rem;
-        }
-
-        .nav-links a:hover {
-            color: #8b9bb0;
-        }
-
-        /* Mobile menu button */
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #5a6572;
-        }
-
-        /* Hero section - нейтральный фон */
-        .hero {
-            margin-top: 8px;
-            width: 100%;
-            height: 70vh;
-            min-height: 480px;
-            background-color: #e8ecef;
-            background-image: url('https://placehold.co/1600x900/e8ecef/8b9bb0?text=Фасад+дома+%7C+замените+на+своё+фото');
-            background-size: cover;
-            background-position: center;
-            border-radius: 0 0 32px 32px;
+            padding: 2rem;
             position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            overflow-x: hidden;
         }
 
-        .hero-text {
-            background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
-            width: 100%;
-            padding: 48px 24px 32px;
-            text-align: center;
-            color: white;
-            border-radius: 0 0 32px 32px;
-        }
-
-        .hero-text h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .hero-text p {
-            font-size: 1.3rem;
-            margin-top: 12px;
-        }
-
-        /* section spacing */
-        section {
-            padding: 72px 0;
-            border-bottom: 1px solid #efefec;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-            color: #3a414a;
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 60%;
-            height: 3px;
-            background: #b9cad9;
-            margin-top: 8px;
-            border-radius: 4px;
-        }
-
-        /* Блок ОПЛАТА / ЦЕНА — новый стиль без зеленого */
-        .price-card {
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 40px 32px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
-            border: 1px solid #eef0f2;
-        }
-        .price-main {
-            text-align: center;
-            margin-bottom: 36px;
-            padding-bottom: 28px;
-            border-bottom: 2px dashed #e2e6ea;
-        }
-        .price-main .price-number {
-            font-size: 3.8rem;
-            font-weight: 800;
-            color: #2c3e50;
-            letter-spacing: -1px;
-        }
-        .price-main .price-period {
-            font-size: 1.2rem;
-            color: #7e8c9e;
-            margin-left: 6px;
-        }
-        .price-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 28px;
-            margin-top: 20px;
-        }
-        .detail-item {
-            background: #f9fafc;
-            border-radius: 24px;
-            padding: 22px 20px;
-            transition: all 0.2s;
-            border: 1px solid #edeff2;
-        }
-        .detail-item i {
-            font-size: 1.8rem;
-            color: #8f9eb2;
-            margin-bottom: 14px;
-        }
-        .detail-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-            color: #3c4858;
-        }
-        .detail-item p {
-            color: #5f6c7e;
-            line-height: 1.4;
-        }
-        .prepayment-badge {
-            background: #f4f6f9;
-            padding: 16px 24px;
-            border-radius: 60px;
-            text-align: center;
-            margin-top: 32px;
-            font-size: 1rem;
-            color: #4f5b69;
-            border: 1px solid #e6eaef;
-        }
-
-        /* Gallery */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 28px;
-            margin-top: 16px;
-        }
-        .gallery-item {
-            cursor: pointer;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: transform 0.25s ease, box-shadow 0.25s;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            border: 1px solid #edeff2;
-        }
-        .gallery-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
-        }
-        .gallery-img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            background-color: #eef2f5;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #8f9eb2;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        .caption {
-            padding: 12px 16px;
-            background: white;
-            font-weight: 500;
-            border-top: 1px solid #f0f2f4;
-            color: #4e5a6b;
-        }
-
-        /* description */
-        .desc-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 48px;
-            align-items: center;
-        }
-        .desc-text {
-            flex: 1.2;
-        }
-        .desc-highlight {
-            flex: 0.8;
-            background: #f9fafc;
-            padding: 28px;
-            border-radius: 32px;
-            border: 1px solid #eef0f3;
-        }
-        .feature-list {
-            list-style: none;
-        }
-        .feature-list li {
-            margin: 16px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #4d5b6b;
-        }
-        .feature-list i {
-            color: #8f9eb2;
-            width: 24px;
-        }
-
-        /* location */
-        .location-card {
-            background: #ffffff;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-            border: 1px solid #edeff2;
-        }
-        .map-placeholder {
-            background-color: #eef2f5;
-            height: 320px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('https://placehold.co/1200x400/eef2f5/8f9eb2?text=Карта+расположения+поселка');
-            background-size: cover;
-            background-position: center;
-            color: #6e7c8f;
-            font-weight: 500;
-        }
-        .location-info {
-            padding: 24px 28px;
-        }
-
-        /* Contacts (no form) */
-        .contacts-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            justify-content: space-between;
-            background: #ffffff;
-            border-radius: 48px;
-            padding: 40px 32px;
-            border: 1px solid #edeff2;
-        }
-        .contact-item {
-            flex: 1;
-            min-width: 180px;
-            text-align: center;
-        }
-        .contact-item i {
-            font-size: 2.2rem;
-            background: #f4f6f9;
-            padding: 16px;
-            border-radius: 60px;
-            color: #6b7c93;
-            margin-bottom: 16px;
-        }
-        .contact-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            color: #3e4a5b;
-        }
-        .contact-item a, .contact-item span {
-            font-size: 1.1rem;
-            color: #5f6e82;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .work-hours {
-            font-size: 1rem;
-            color: #7d8b9c;
-            margin-top: 8px;
-        }
-
-        footer {
-            background: #f5f6f8;
-            color: #7a8798;
-            text-align: center;
-            padding: 28px 0;
-            font-size: 0.9rem;
-            border-top: 1px solid #e9ecef;
-        }
-
-        /* Lightbox styles */
-        .lightbox {
+        /* военная сетка / растр */
+        body::before {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.92);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0.2s, opacity 0.2s;
-        }
-        .lightbox.active {
-            visibility: visible;
-            opacity: 1;
-        }
-        .lightbox-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-        }
-        .lightbox-img {
-            max-width: 90vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 16px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
-        }
-        .close-lightbox {
-            position: absolute;
-            top: -48px;
-            right: 0;
-            font-size: 2.5rem;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .lightbox-prev, .lightbox-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(30,30,30,0.6);
-            color: white;
-            border: none;
-            font-size: 2.2rem;
-            padding: 10px 18px;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: 0.2s;
-        }
-        .lightbox-prev { left: -60px; }
-        .lightbox-next { right: -60px; }
-        @media (max-width: 700px) {
-            .lightbox-prev { left: 10px; }
-            .lightbox-next { right: 10px; }
-            .lightbox-prev, .lightbox-next { background: rgba(0,0,0,0.5); font-size: 1.8rem; padding: 6px 14px; }
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(80, 60, 20, 0.15) 0px, rgba(80, 60, 20, 0.15) 2px, transparent 2px, transparent 8px),
+                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.2) 1px, transparent 1px, transparent 12px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                background: white;
-                padding: 20px 0;
-                gap: 16px;
-            }
-            .nav-links.show {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero-text h1 { font-size: 2rem; }
-            .section-title { font-size: 1.8rem; }
-            section { padding: 48px 0; }
-            .price-main .price-number { font-size: 2.8rem; }
+        /* ржавые пятна */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" opacity="0.12"><path fill="%238b5a2b" d="M0,400 Q150,300 250,380 T450,350 Q550,330 620,400 T780,450 L800,500 L800,1200 L0,1200 Z"/><circle cx="120" cy="850" r="70" fill="%237a431a"/><circle cx="650" cy="920" r="100" fill="%23945c2e"/><path d="M520,220 Q580,180 640,210 T740,260 L700,290 Q660,275 620,280 Z" fill="%236b3e17"/></svg>') repeat;
+            background-size: 400px 400px;
+            pointer-events: none;
+            z-index: 0;
         }
-        @media (max-width: 600px) {
-            .container { padding: 0 20px; }
-            .hero { height: 50vh; min-height: 350px; }
-            .price-details { grid-template-columns: 1fr; }
-            .contacts-grid { flex-direction: column; gap: 28px; }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(3px);
+            border: 4px solid #7c5e2c;
+            box-shadow: 0 0 0 2px #2c1e0e, 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0,0,0,0.5);
+            border-radius: 32px;
+            padding: 2rem 2rem 3rem;
+            transition: all 0.2s;
         }
-        button {
-            background: none;
-            border: none;
+
+        /* главный заголовок — ВЕНОМ ХУЕСОС */
+        .epic-title {
+            text-align: center;
+            font-size: clamp(3.5rem, 15vw, 7rem);
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #e0b043;
+            text-shadow: 
+                6px 6px 0px #4a2a0c,
+                10px 10px 20px black,
+                0 0 8px #ff9900;
+            background: linear-gradient(135deg, #f5cb5c, #b47c2e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 4px 4px 0 #2f210b;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+            transform: skew(-2deg) rotate(-0.5deg);
+        }
+
+        /* "причины почему" подзаголовок */
+        .sub-agony {
+            text-align: center;
+            font-family: 'Courier New', 'Courier', monospace;
+            font-size: 1.4rem;
+            font-weight: bold;
+            background: #1e1a0cbb;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 2rem auto;
+            padding: 0.6rem 1.8rem;
+            letter-spacing: 2px;
+            color: #c7a252;
+            border-left: 6px solid #bf6f00;
+            border-right: 6px solid #bf6f00;
+            backdrop-filter: blur(4px);
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(0,0,0,0.5);
+        }
+
+        /* сетка причин — военная карточная */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .reason-card {
+            background: rgba(10, 12, 18, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid #7a5a2e;
+            border-radius: 24px;
+            padding: 1.4rem 1.2rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-6px);
+            border-color: #c9922b;
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+            background: rgba(15, 18, 26, 0.92);
+        }
+
+        /* военные уголки */
+        .reason-card::before {
+            content: "⚙️";
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 2rem;
+            opacity: 0.2;
+            pointer-events: none;
+            transform: rotate(15deg);
+        }
+
+        .reason-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #e6b34c;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px dashed #7c601f;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .reason-title span {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 2px black);
+        }
+
+        .reason-text {
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            font-size: 1.05rem;
+            line-height: 1.45;
+            color: #ddcca5;
+            font-weight: 600;
+            text-shadow: 0 1px 0 #00000055;
+        }
+
+        .reason-text strong {
+            color: #ffbc6e;
+            font-weight: 900;
+        }
+
+        .warthunder-badge {
+            display: flex;
+            justify-content: center;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .badge {
+            background: #2a2416;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: monospace;
+            letter-spacing: 2px;
+            color: #bf8a3a;
+            border: 1px solid #a77c30;
+            box-shadow: inset 0 0 6px #4a3a1a, 0 6px 0 #1f170a;
+            transform: skew(-3deg);
+            backdrop-filter: blur(2px);
+        }
+
+        .badge span {
+            color: #e5a336;
+            font-size: 1.9rem;
+            vertical-align: middle;
+        }
+
+        .footer-meme {
+            text-align: center;
+            margin-top: 2.8rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #786c44;
+            border-top: 1px solid #5c4a24;
+            padding-top: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* адаптив для планшетов */
+        @media (max-width: 700px) {
+            .main-container {
+                padding: 1.5rem;
+            }
+            .reason-title {
+                font-size: 1.6rem;
+            }
+            .reason-text {
+                font-size: 0.95rem;
+            }
+            .badge {
+                font-size: 1rem;
+                padding: 8px 20px;
+            }
+        }
+
+        /* "военная" анимация салютов из гнили */
+        @keyframes shellShake {
+            0% { transform: translate(0px, 0px); }
+            25% { transform: translate(1px, -1px); }
+            75% { transform: translate(-1px, 1px); }
+            100% { transform: translate(0px, 0px); }
+        }
+
+        .epic-title:hover {
+            animation: shellShake 0.2s ease-in-out 2;
+            cursor: default;
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="container nav-wrapper">
-        <div class="logo"><i class="fas fa-home"></i> ForestHouse</div>
-        <button class="menu-toggle" id="mobileMenuBtn" aria-label="Меню"><i class="fas fa-bars"></i></button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#payment">Оплата</a></li>
-            <li><a href="#gallery-all">Фотографии</a></li>
-            <li><a href="#gallery-exterior">Снаружи</a></li>
-            <li><a href="#gallery-interior">Внутри</a></li>
-            <li><a href="#description">Описание</a></li>
-            <li><a href="#location">Расположение</a></li>
-            <li><a href="#contacts">Контакты</a></li>
-        </ul>
+<div class="main-container">
+    <!-- ГЛАВНАЯ НАДПИСЬ: ВЕНОМ ХУЕСОС -->
+    <div class="epic-title">
+        ВЕНОМ ХУЕСОС
     </div>
-</nav>
-
-<header class="hero">
-    <div class="hero-text">
-        <h1>Аренда дома в коттеджном поселке</h1>
-        <p>Уют, природа и панорамные виды</p>
+    
+    <div style="display: flex; justify-content: center;">
+        <div class="sub-agony">
+            🔥 ПРИЧИНЫ, ПОЧЕМУ ЭТО ТАК 🔥
+        </div>
     </div>
-</header>
 
-<main>
-    <!-- ОПЛАТА / ЦЕНА + УСЛОВИЯ ПРЕДОПЛАТЫ (без способов оплаты) -->
-    <section id="payment">
-        <div class="container">
-            <h2 class="section-title">Стоимость и условия</h2>
-            <div class="price-card">
-                <div class="price-main">
-                    <span class="price-number">12 900 ₽</span>
-                    <span class="price-period">/ сутки (до 6 гостей)</span>
-                    <div style="margin-top: 12px; font-size: 1rem; color: #6c7a8e;">Доп. гость +1500 ₽/ночь, до 8 человек</div>
-                </div>
-                <div class="price-details">
-                    <div class="detail-item">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <h4>Предоплата</h4>
-                        <p>30% от суммы бронирования при подтверждении. Остаток — за 3 дня до заезда или наличными при встрече.</p>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Залог / Депозит</h4>
-                        <p>5 000 ₽ возвращаемый депозит (за сохранность имущества). Возврат в день выезда после осмотра.</p>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-calendar-week"></i>
-                        <h4>Минимальный срок</h4>
-                        <p>2 ночи в низкий сезон, 3 ночи в праздничные дни и высокий сезон (июнь–август).</p>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-times-circle"></i>
-                        <h4>Отмена брони</h4>
-                        <p>Бесплатная отмена за 14 дней до заезда. При отмене за 7–13 суток — возврат 50% предоплаты. Менее 7 суток — предоплата не возвращается.</p>
-                    </div>
-                </div>
-                <div class="prepayment-badge">
-                    <i class="fas fa-info-circle"></i> Для бронирования достаточно внести предоплату 30%. После оплаты высылаем договор и подтверждение. 
-                    Расчетные способы уточняйте по телефону или Telegram.
-                </div>
+    <!-- СЕТКА ПРИЧИН (Варн Тандер тематика) -->
+    <div class="reasons-grid">
+        
+        <!-- Карточка 1 -->
+        <div class="reason-card">
+            <div class="reason-title">
+                <span>🐌💀</span>  СНАЙЛ-ИГРА
+            </div>
+            <div class="reason-text">
+                <strong>«War Thunder»</strong> — это digital-петля, созданная <strong>Gaijin Entertainment</strong>. 
+                Ты заходишь «на часик», а выходишь через 14 часов с нервным тиком. Гриндилка бесконечна, 
+                а баланс ломают каждые два патча. <strong>Веном</strong> вместо нормальной жизни получил вечную боль.
             </div>
         </div>
-    </section>
 
-    <!-- Фотографии (общая галерея) -->
-    <section id="gallery-all">
-        <div class="container">
-            <h2 class="section-title">Фотогалерея</h2>
-            <div class="gallery-grid" id="galleryGridAll"></div>
-        </div>
-    </section>
-
-    <!-- Фотографии снаружи -->
-    <section id="gallery-exterior">
-        <div class="container">
-            <h2 class="section-title">Фотографии снаружи</h2>
-            <div class="gallery-grid" id="galleryExterior"></div>
-        </div>
-    </section>
-
-    <!-- Фотографии внутри -->
-    <section id="gallery-interior">
-        <div class="container">
-            <h2 class="section-title">Интерьер дома</h2>
-            <div class="gallery-grid" id="galleryInterior"></div>
-        </div>
-    </section>
-
-    <!-- Описание -->
-    <section id="description">
-        <div class="container">
-            <h2 class="section-title">О доме и территории</h2>
-            <div class="desc-wrapper">
-                <div class="desc-text">
-                    <p style="font-size:1.2rem; margin-bottom:20px;">Просторный дом 180 м² в экологичном коттеджном поселке с панорамными видами на лес и озеро. Идеально для отдыха семьей или компанией до 8 человек.</p>
-                    <p>Современная мебель, теплые полы, панорамные окна в гостиной. Терраса с мангалом, ландшафтный дизайн, детская площадка в 2 минутах ходьбы. Собственный пруд и зона для пикника.</p>
-                </div>
-                <div class="desc-highlight">
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Wi-Fi 100 Мбит/с</li>
-                        <li><i class="fas fa-hot-tub"></i> Чан с подогревом</li>
-                        <li><i class="fas fa-fire"></i> Камин в гостиной</li>
-                        <li><i class="fas fa-car"></i> Парковка на 2 авто</li>
-                        <li><i class="fas fa-dog"></i> Разрешены питомцы</li>
-                    </ul>
-                </div>
+        <!-- Карточка 2 -->
+        <div class="reason-card">
+            <div class="reason-title">
+                <span>💰🗑️</span>  ДОНАДОРСТВО
+            </div>
+            <div class="reason-text">
+                Премиум аккаунт, топ-танки за 60 баксов, скины, вертушки — <strong>Веном</strong> уже спустил 
+                на эту помойку состояние, которое мог бы потратить на себя. Но «Варн Тандер» высасывает 
+                деньги быстрее, чем зенитка «Шилка» — серебряные львы.
             </div>
         </div>
-    </section>
 
-    <!-- Расположение -->
-<section id="location">
-    <div class="container">
-        <h2 class="section-title">Расположение</h2>
-        <div class="location-card">
-            <!-- Карта Яндекс.Карты (адаптивная) -->
-            <div style="width:100%; height:320px; overflow:hidden; border-radius:24px 24px 0 0;">
-                <iframe 
-                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A3aaefe45a21d87eab0dab567015c0f1a2415a043a9d95657cf97c40864573b7a&amp;source=constructor" 
-                    width="100%" 
-                    height="100%" 
-                    frameborder="0"
-                    style="border:0;"
-                    allowfullscreen="true">
-                </iframe>
+        <!-- Карточка 3 -->
+        <div class="reason-card">
+            <div class="reason-title">
+                <span>💢😤</span>  РАКОВАЯ ТОКСИЧНОСТЬ
             </div>
-            <div class="location-info">
-                <p><i class="fas fa-road"></i> <strong>Адрес:</strong> Московская область, Раменский муниципальный округ, село Зюзино, КП Лесной, Лесная улица, 27</p>
+            <div class="reason-text">
+                Чат после каждого боя — это адская смесь оскорблений, спама «нубосрач» и нацистских 
+                танковых споров. <strong>Веном Хуесос</strong> теперь сам матерится на всю квартиру, когда его 
+                подбивают с первого выстрела из-за бага брони. Кровь из глаз.
+            </div>
+        </div>
+
+        <!-- Карточка 4 -->
+        <div class="reason-card">
+            <div class="reason-title">
+                <span>🧠💥</span>  СИНДРОМ ОДНОГО БОЯ
+            </div>
+            <div class="reason-text">
+                «Еще один бой и спать» — классическая ловушка. <strong>Веном</strong> играет до 5 утра, 
+                потом спит на работе/учебе. <strong>War Thunder</strong> крадет время, здоровье, друзей и 
+                нормальный режим. Тематика сайта военная — режим уничтожен.
+            </div>
+        </div>
+
+        <!-- Карточка 5 (Доп. причина про секретные документы и безумие) -->
+        <div class="reason-card">
+            <div class="reason-title">
+                <span>📜🔥</span>  УТЕЧКИ СЕКРЕТНЫХ ДАННЫХ
+            </div>
+            <div class="reason-text">
+                Фанаты <strong>War Thunder</strong> настолько больны, что сливают в сеть реальные чертежи танков 
+                ради фикса багов. <strong>Веном</strong> уже сам подумывает украсть секретный документ у соседа-военного, 
+                чтобы доказать, что Т-90М должен иметь 800 мм брони. Это клиника.
+            </div>
+        </div>
+
+        <!-- Карточка 6 -->
+        <div class="reason-card">
+            <div class="reason-title">
+                <span>🎮🤡</span>  ГАЙДЗИН НЕ ЛЮБИТ ИГРОКОВ
+            </div>
+            <div class="reason-text">
+                Разработчики постоянно нерфят фарм, повышают цены на ремонт техники. <strong>Веном</strong> 
+                уже продал почку ради «Т-80УК», но через месяц его сделали бесполезным. 
+                <strong>Хуесос</strong> — это состояние души каждого ветерана Варн Тандер.
             </div>
         </div>
     </div>
-</section>
 
-    <!-- Контакты (только контактная информация, без формы) -->
-    <section id="contacts">
-        <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contacts-grid">
-                <div class="contact-item"><i class="fas fa-phone-alt"></i><h4>Телефон</h4><a href="tel:+79161861146">+7 (916) 186-11-46</a></div>
-               <div class="contact-item">
-    <i class="fab fa-telegram"></i>
-    <h4>Telegram</h4>
-    <a href="https://t.me/yourusername" target="_blank">@zabor_r</a>
-</div>
-                <div class="contact-item"><i class="fas fa-envelope"></i><h4>Email</h4><a href="mailto:rent@foresthouse.ru">daniil2009pich@gmail.com</a></div>
-                <div class="contact-item"><i class="fas fa-clock"></i><h4>Время работы</h4><span>Ежедневно 09:00 – 21:00</span><div class="work-hours">Бронирование 24/7 онлайн</div></div>
-            </div>
+    <!-- Блок с акцентом на варн тандер + ирония -->
+    <div class="warthunder-badge">
+        <div class="badge">
+            <span>⚡</span> WAR THUNDER — DIGITAL CANCER <span>⚡</span>
         </div>
-    </section>
-</main>
-
-<footer>
-    <div class="container">
-        <p>© 2025 Аренда домов в КП ForestHouse | Уют и комфорт для вашего отдыха</p>
     </div>
-</footer>
 
-<!-- Lightbox container -->
-<div id="lightbox" class="lightbox">
-    <button class="close-lightbox" id="closeLightboxBtn">&times;</button>
-    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-    <div class="lightbox-content">
-        <img class="lightbox-img" id="lightboxImg" src="" alt="lightbox">
+    <!-- Дополнительное сообщение / клич -->
+    <div style="text-align: center; font-family: 'Courier New', monospace; background: #00000066; border-radius: 60px; padding: 12px; margin-top: 20px;">
+        <p style="color: #e2bc7c; font-weight: bold; font-size: 1.1rem;">
+            🚫 ОСТАНОВИ ЭТО, ПОКА НЕ СТАЛО ПОЗДНО 🚫<br>
+            <span style="font-size: 0.85rem; color:#9e864b;">Веном, мы все знаем — ты играешь в Варн Тандер, и это причина твоего краха</span>
+        </p>
     </div>
-    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+
+    <div class="footer-meme">
+        ⚙️ САЙТ СОЗДАН В АГОНИИ И НЕНАВИСТИ К ГРИНДУ ⚙️<br>
+        ВЕНОМ ХУЕСОС — ПРИЗНАК ЗАПУЩЕННОЙ СТАДИИ WAR THUNDER | 2026
+    </div>
 </div>
 
+<!-- маленький скрипт для агрессивной динамики: при клике на заголовок рык (шутка) -->
 <script>
-    // ---------- ГЕНЕРАЦИЯ ГАЛЕРЕЙ С ЗАГЛУШКАМИ ----------
-    // Для замены фото: измените placeholderBg на реальный путь к изображению
-    const allPhotos = [
-        { category: "all", type: "exterior", title: "Фасад дома", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Фасад+дома" },
-        { category: "all", type: "exterior", title: "Вид на террасу", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Терраса+и+сад" },
-        { category: "all", type: "interior", title: "Гостиная с камином", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Гостиная" },
-        { category: "all", type: "interior", title: "Кухня-столовая", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Кухня" },
-        { category: "all", type: "exterior", title: "Панорамный вид на озеро", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Вид+на+озеро" },
-        { category: "all", type: "exterior", title: "Ландшафт и территория", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Территория" },
-        { category: "all", type: "interior", title: "Спальня", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Спальня" },
-        { category: "all", type: "interior", title: "Ванная комната", placeholderBg: "https://placehold.co/800x600/eef2f5/8f9eb2?text=Ванная" }
-    ];
-
-    const exteriorPhotos = allPhotos.filter(p => p.type === "exterior");
-    const interiorPhotos = allPhotos.filter(p => p.type === "interior");
-
-    function renderGallery(containerId, photosArray) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = '';
-        photosArray.forEach((photo, idx) => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            const imgDiv = document.createElement('div');
-            imgDiv.className = 'gallery-img';
-            imgDiv.style.backgroundImage = `url('${photo.placeholderBg}')`;
-            imgDiv.style.backgroundSize = 'cover';
-            imgDiv.style.backgroundPosition = 'center';
-            imgDiv.style.display = "flex";
-            imgDiv.style.alignItems = "center";
-            imgDiv.style.justifyContent = "center";
-            const overlaySpan = document.createElement('span');
-            overlaySpan.innerText = photo.title;
-            overlaySpan.style.background = "rgba(0,0,0,0.45)";
-            overlaySpan.style.color = "white";
-            overlaySpan.style.padding = "6px 12px";
-            overlaySpan.style.borderRadius = "40px";
-            overlaySpan.style.fontSize = "0.85rem";
-            overlaySpan.style.fontWeight = "500";
-            imgDiv.appendChild(overlaySpan);
-            
-            const captionDiv = document.createElement('div');
-            captionDiv.className = 'caption';
-            captionDiv.innerHTML = `<i class="fas fa-camera"></i> ${photo.title}`;
-            
-            item.appendChild(imgDiv);
-            item.appendChild(captionDiv);
-            
-            item.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openLightboxWithArray(photosArray, idx);
+    (function() {
+        const title = document.querySelector('.epic-title');
+        if(title) {
+            title.addEventListener('click', () => {
+                // просто вибрация, если поддерживается, чтобы усилить ощущение "военной" тематики
+                if(navigator.vibrate) {
+                    navigator.vibrate(200);
+                }
+                // временный эффект ряби (стиль)
+                title.style.transform = 'skew(-3deg) rotate(-1deg) scale(1.02)';
+                setTimeout(() => {
+                    title.style.transform = '';
+                }, 150);
+                console.log("ВЕНОМ ХУЕСОС — подтверждено, варн тандер разрушает психику");
             });
-            container.appendChild(item);
+        }
+        // добавим пасхалку при клике на любой карточке — грозный рык (псевдо)
+        const cards = document.querySelectorAll('.reason-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if(audioCtx) {
+                    // создать короткий "взрывной" звук через осциллятор (без загрузки файлов)
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'sawtooth';
+                    osc.frequency.value = 120;
+                    gain.gain.value = 0.15;
+                    osc.start();
+                    gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.5);
+                    osc.stop(audioCtx.currentTime + 0.4);
+                }
+            });
         });
-    }
-
-    // Lightbox logic
-    let currentLightboxImages = [];
-    let currentIndex = 0;
-    const lightboxEl = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const closeBtn = document.getElementById('closeLightboxBtn');
-    const prevBtn = document.getElementById('lightboxPrev');
-    const nextBtn = document.getElementById('lightboxNext');
-
-    function openLightboxWithArray(imagesArray, startIdx) {
-        currentLightboxImages = imagesArray.map(img => ({ url: img.placeholderBg, title: img.title }));
-        currentIndex = startIdx;
-        updateLightboxImage();
-        lightboxEl.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function updateLightboxImage() {
-        if (currentLightboxImages.length === 0) return;
-        const imgData = currentLightboxImages[currentIndex];
-        lightboxImg.src = imgData.url;
-        lightboxImg.alt = imgData.title;
-    }
-
-    function closeLightbox() {
-        lightboxEl.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function nextImage() {
-        if (currentLightboxImages.length === 0) return;
-        currentIndex = (currentIndex + 1) % currentLightboxImages.length;
-        updateLightboxImage();
-    }
-
-    function prevImage() {
-        if (currentLightboxImages.length === 0) return;
-        currentIndex = (currentIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
-        updateLightboxImage();
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    nextBtn.addEventListener('click', nextImage);
-    prevBtn.addEventListener('click', prevImage);
-    lightboxEl.addEventListener('click', (e) => {
-        if (e.target === lightboxEl) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (!lightboxEl.classList.contains('active')) return;
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
-        if (e.key === 'Escape') closeLightbox();
-    });
-
-    renderGallery('galleryGridAll', allPhotos);
-    renderGallery('galleryExterior', exteriorPhotos);
-    renderGallery('galleryInterior', interiorPhotos);
-
-    // Mobile menu
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navLinksEl = document.getElementById('navLinks');
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            navLinksEl.classList.toggle('show');
-        });
-    }
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinksEl.classList.remove('show');
-        });
-    });
-
-    // Комментарий для замены фото:
-    // 1. В объектах allPhotos измените placeholderBg на реальные ссылки на изображения (например, 'images/fasad.jpg')
-    // 2. Обновите фон hero в CSS .hero background-image
-    // 3. Карту расположения можно заменить на iframe (Яндекс/Google) внутри .map-placeholder
-    console.log("Лендинг обновлен: раздел оплаты содержит цену, предоплату, депозит. Зеленые акценты убраны, стиль светлый.");
+    })();
 </script>
 </body>
 </html>
